@@ -4,27 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>소설 뷰어</title>
-
     <link rel="stylesheet" href="styles.css">
-    
 </head>
 <body>
-<body>
-    <div class="container">
-        <h1>소설 뷰어</h1>
-        <select id="fontSelector">
-            <input type="radio" name="payment" id="card" checked="checked" />
-            <label for="card">Card</label>
-            <input type="radio" name="payment" id="cash">
-            <label for="cash">Cash</label>
-            <input type="radio" name="payment" id="cash" />
-            <label for="cash">Cash</label>
-        </select>        
+    <div class="container">        
+
+        <!-- Font Selector -->
+        <div id="fontSelector">
+                        <input type="radio" id="font1" name="font" value="font1" checked>
+            <label for="font1">리디바탕</label>
+            <input type="radio" id="font2" name="font" value="font2">
+            <label for="font2">구름산스</label>
+            <input type="radio" id="font3" name="font" value="font3">
+            <label for="font3">둥근모꼴</label>
+        </div>
+
+        <!-- Theme Selector -->
+        <div id="themeSelector">            
+            <input type="radio" id="theme1" name="theme" value="theme1" checked>
+            <label for="theme1">Light</label>
+            <input type="radio" id="theme2" name="theme" value="theme2">
+            <label for="theme2">Dark</label>
+            <input type="radio" id="theme3" name="theme" value="theme3">
+            <label for="theme3">Sephia</label>
+            <input type="radio" id="theme4" name="theme" value="theme4">
+            <label for="theme4">Green</label>
+        
+        </div>
+
         <div id="content"></div>
         <button id="saveButton">변경 사항 저장</button>
         <input type="file" id="fileInput" class="file-input" accept=".json">
     </div>
 
     <script src="scripts.js"></script>
-    </body>
-    </html>
+</body>
+</html>
