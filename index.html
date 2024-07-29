@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소설 뷰어</title>
+
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+<body>
+    <div class="container">
+        <h1>소설 뷰어</h1>
+        <select id="fontSelector">
+            <input type="radio" name="payment" id="card" checked="checked" />
+            <label for="card">Card</label>
+            <input type="radio" name="payment" id="cash">
+            <label for="cash">Cash</label>
+            <input type="radio" name="payment" id="cash" />
+            <label for="cash">Cash</label>
+        </select>        
+        <div id="content"></div>
+        <button id="saveButton">변경 사항 저장</button>
+        <input type="file" id="fileInput" class="file-input" accept=".json">
+    </div>
+
+    <script src="scripts.js"></script>
+    </body>
+    </html>
