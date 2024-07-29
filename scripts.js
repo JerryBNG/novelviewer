@@ -2,20 +2,41 @@ document.addEventListener('DOMContentLoaded', function () {
     const fontRadios = document.querySelectorAll('input[name="font"]');
     const themeRadios = document.querySelectorAll('input[name="theme"]');
     const body = document.body;
-    });
+
+    // 폰트 및 테마 설정 로드
+    const savedFont = localStorage.getItem('selectedFont');
+    const savedTheme = localStorage.getItem('selectedTheme');
+
+    if (savedFont) {
+        document.getElementById(savedFont).checked = true;
+        body.classList.add(savedFont);
+    } else {
+        body.classList.add('font1');
+    }
+
+    if (savedTheme) {
+        document.getElementById(savedTheme).checked = true;
+        body.classList.add(savedTheme);
+    } else {
+        body.classList.add('theme1');
+    }
+
     fontRadios.forEach(radio => {
         radio.addEventListener('change', function () {
             body.classList.remove('font1', 'font2', 'font3');
             body.classList.add(this.value);
+            localStorage.setItem('selectedFont', this.id);
         });
     });
 
     themeRadios.forEach(radio => {
         radio.addEventListener('change', function () {
-            body.classList.remove('theme1', 'theme2', 'theme3');
+            body.classList.remove('theme1', 'theme2', 'theme3', 'theme4');
             body.classList.add(this.value);
+            localStorage.setItem('selectedTheme', this.id);
         });
     });
+});
 
 function toggleOriginal(index) {
     const original = document.getElementById(`original-${index}`);
@@ -65,10 +86,6 @@ document.getElementById('nextFileInput').addEventListener('change', function(e) 
         loadFile(file);
         window.scrollTo(0, 0);
     }
-});
-
-document.getElementById('fontSelector').addEventListener('change', function(e) {
-    document.documentElement.style.fontFamily = this.value;
 });
 
 document.getElementById('content').addEventListener('input', function(e) {
