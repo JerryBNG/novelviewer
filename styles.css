@@ -51,12 +51,12 @@ body {
 
 /* 기타 스타일 설정 */
 .container {
-    max-width: 740px;
+    max-width: 720px;
     margin: 0 auto;
 }
 #content {
     background-color: var(--container-bg-color, none);
-    padding: 20px;
+    padding: 216x;
     border-radius: 5px;
     line-height: 1.8; /* 줄간격 설정 */
 }
