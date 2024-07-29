@@ -67,13 +67,8 @@ function loadFile(file) {
     currentFileName = file.name;
     const reader = new FileReader();
     reader.onload = function(e) {
-        try {
-            const content = e.target.result;
-            const data = JSON.parse(content);
-            renderContent(data);
-        } catch (error) {
-            console.error("JSON 파일 파싱 오류:", error);
-        }
+        currentData = JSON.parse(e.target.result);
+        renderContent(currentData);
     };
     reader.readAsText(file);
 }

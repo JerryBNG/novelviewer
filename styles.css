@@ -53,18 +53,17 @@ body {
 .container {
     max-width: 740px;
     margin: 0 auto;
-    padding: 20px;
 }
 #content {
     background-color: var(--container-bg-color, none);
-    padding: 40px;
+    padding: 20px;
     border-radius: 5px;
     line-height: 1.8; /* 줄간격 설정 */
 }
 .translation {
     margin-bottom: 10px; /* 문단 간격 */
     cursor: pointer;
-    padding: 10px;
+    padding: 8px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
     color: var(--translation-color, #000000); /* 폰트 색상 */
