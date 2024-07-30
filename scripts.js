@@ -50,17 +50,35 @@ function renderContent(data) {
     data.forEach((item, index) => {
         const div = document.createElement('div');
         div.className = 'translation';
-        div.innerHTML = `
-            <div class="kr-text" onclick="toggleOriginal(${index})">
-                <span contenteditable="true" class="editable" data-index="${index}">${item.kr}</span>
-            </div>
-            <div id="original-${index}" class="original">${item.jp}</div>
-        `;
+        
+        if (item.break !== undefined) {
+            // Break 내용 처리
+            div.classList.add('break-content');
+            div.innerHTML = `<p>${item.break}</p>`;
+        } else {
+            // 기존 번역 내용 처리
+            div.innerHTML = `
+                <div class="kr-text" onclick="toggleOriginal(${index})">
+                    <span contenteditable="true" class="editable" data-index="${index}">${item.kr}</span>
+                </div>
+                <div id="original-${index}" class="original">${item.jp}</div>
+            `;
+        }
+        
         content.appendChild(div);
     });
 
     document.getElementById('nextFileInput').style.display = 'block';
-    document.getElementById('saveButton').style.display = 'block';
+    updateSaveButtonVisibility();
+}
+
+function updateSaveButtonVisibility() {
+    const saveButton = document.getElementById('saveButton');
+    if (hasChanges) {
+        saveButton.style.display = 'block';
+    } else {
+        saveButton.style.display = 'none';
+    }
 }
 
 function loadFile(file) {
@@ -69,6 +87,8 @@ function loadFile(file) {
     reader.onload = function(e) {
         currentData = JSON.parse(e.target.result);
         renderContent(currentData);
+        hasChanges = false;
+        updateSaveButtonVisibility();
     };
     reader.readAsText(file);
 }
@@ -92,8 +112,19 @@ document.getElementById('content').addEventListener('input', function(e) {
     if (e.target.classList.contains('editable')) {
         const index = e.target.getAttribute('data-index');
         currentData[index].kr = e.target.innerText;
+        hasChanges = true;
+        updateSaveButtonVisibility();
     }
 });
+
+document.getElementById('saveButton').addEventListener('click', function() {
+    // ... (기존 저장 로직)
+
+    hasChanges = false;
+    updateSaveButtonVisibility();
+    alert('변경 사항이 저장되었습니다!');
+});
+
 
 document.getElementById('content').addEventListener('click', function(e) {
     if (e.target.classList.contains('editable')) {
